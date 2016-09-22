@@ -1,0 +1,26 @@
+{
+	"Products": [
+		{
+			"ID": "2353",
+			"Name": "Wordpress CMS",
+			"Description": null,
+			"DateCreated": "4/4/2015 9:45 AM",
+			"DateModified": "7/4/2015 10:12 AM",
+			"CreatorID": "1159332",
+			"ModifierID": "1159332",
+			"CustomField1": "1212",
+			"CustomField2": "2323"
+		},
+		{
+			"ID": "73343",
+			"Name": "Google Analytics",
+			"Description": null,
+			"DateCreated": "4/15/2015 1:52 PM",
+			"DateModified": "7/24/2015 12:15 AM",
+			"CreatorID": "1159332",
+			"ModifierID": "1159332",
+			"CustomField1": "2323",
+			"CustomField2": "3434"
+		}
+	]
+}

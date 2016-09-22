@@ -1,0 +1,69 @@
+digraph classes {
+	graph [rotate=0, rankdir="LR"]
+	node [fillcolor="#c4ddec", style="filled", fontname="Helvetica Neue"]
+	edge [color="#444444"]
+	Array [label="Array"]
+	Exception [label="Exception"]
+	Naught__BasicObject [label="Naught::BasicObject"]
+	Object [label="Object"]
+	StandardError [label="StandardError"]
+	Teamsupport__Arguments [label="Teamsupport::Arguments"]
+	Teamsupport__Base [label="Teamsupport::Base"]
+	Teamsupport__Client [label="Teamsupport::Client"]
+	Teamsupport__Customer [label="Teamsupport::Customer"]
+	Teamsupport__CustomerProduct [label="Teamsupport::CustomerProduct"]
+	Teamsupport__Error [label="Teamsupport::Error"]
+	Teamsupport__Error__BadGateway [label="Teamsupport::Error::BadGateway"]
+	Teamsupport__Error__BadRequest [label="Teamsupport::Error::BadRequest"]
+	Teamsupport__Error__ClientError [label="Teamsupport::Error::ClientError"]
+	Teamsupport__Error__Forbidden [label="Teamsupport::Error::Forbidden"]
+	Teamsupport__Error__GatewayTimeout [label="Teamsupport::Error::GatewayTimeout"]
+	Teamsupport__Error__InternalServerError [label="Teamsupport::Error::InternalServerError"]
+	Teamsupport__Error__NotAcceptable [label="Teamsupport::Error::NotAcceptable"]
+	Teamsupport__Error__NotFound [label="Teamsupport::Error::NotFound"]
+	Teamsupport__Error__ServerError [label="Teamsupport::Error::ServerError"]
+	Teamsupport__Error__ServiceUnavailable [label="Teamsupport::Error::ServiceUnavailable"]
+	Teamsupport__Error__TooManyRequests [label="Teamsupport::Error::TooManyRequests"]
+	Teamsupport__Error__Unauthorized [label="Teamsupport::Error::Unauthorized"]
+	Teamsupport__Error__UnprocessableEntity [label="Teamsupport::Error::UnprocessableEntity"]
+	Teamsupport__Headers [label="Teamsupport::Headers"]
+	Teamsupport__Identity [label="Teamsupport::Identity"]
+	Teamsupport__NullObject [label="Teamsupport::NullObject"]
+	Teamsupport__Product [label="Teamsupport::Product"]
+	Teamsupport__REST__Client [label="Teamsupport::REST::Client"]
+	Teamsupport__REST__Request [label="Teamsupport::REST::Request"]
+	Teamsupport__Ticket [label="Teamsupport::Ticket"]
+	Teamsupport__TicketAction [label="Teamsupport::TicketAction"]
+	Array -> Object
+	Exception -> Object
+	Naught__BasicObject -> BasicObject
+	Object -> BasicObject
+	StandardError -> Exception
+	Teamsupport__Arguments -> Array
+	Teamsupport__Base -> Object
+	Teamsupport__Client -> Object
+	Teamsupport__Customer -> Teamsupport__Identity
+	Teamsupport__CustomerProduct -> Teamsupport__Product
+	Teamsupport__Error -> StandardError
+	Teamsupport__Error__BadGateway -> Teamsupport__Error__ServerError
+	Teamsupport__Error__BadRequest -> Teamsupport__Error__ClientError
+	Teamsupport__Error__ClientError -> Teamsupport__Error
+	Teamsupport__Error__Forbidden -> Teamsupport__Error__ClientError
+	Teamsupport__Error__GatewayTimeout -> Teamsupport__Error__ServerError
+	Teamsupport__Error__InternalServerError -> Teamsupport__Error__ServerError
+	Teamsupport__Error__NotAcceptable -> Teamsupport__Error__ClientError
+	Teamsupport__Error__NotFound -> Teamsupport__Error__ClientError
+	Teamsupport__Error__ServerError -> Teamsupport__Error
+	Teamsupport__Error__ServiceUnavailable -> Teamsupport__Error__ServerError
+	Teamsupport__Error__TooManyRequests -> Teamsupport__Error__ClientError
+	Teamsupport__Error__Unauthorized -> Teamsupport__Error__ClientError
+	Teamsupport__Error__UnprocessableEntity -> Teamsupport__Error__ClientError
+	Teamsupport__Headers -> Object
+	Teamsupport__Identity -> Teamsupport__Base
+	Teamsupport__NullObject -> Naught__BasicObject
+	Teamsupport__Product -> Teamsupport__Identity
+	Teamsupport__REST__Client -> Teamsupport__Client
+	Teamsupport__REST__Request -> Object
+	Teamsupport__Ticket -> Teamsupport__Identity
+	Teamsupport__TicketAction -> Teamsupport__Ticket
+}

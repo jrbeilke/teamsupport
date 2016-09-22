@@ -1,0 +1,12 @@
+--no-private
+--protected
+--tag authentication:"Authentication"
+--markup markdown
+-
+CHANGELOG.md
+CONTRIBUTING.md
+LICENSE.md
+README.md
+examples/AllCustomers.md
+examples/Configuration.md
+examples/UpdateCustomer.md

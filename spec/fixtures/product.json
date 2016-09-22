@@ -1,0 +1,13 @@
+{
+  "Product": {
+    "ProductID": "2353",
+    "Name": "Test Product",
+    "Description": null,
+    "DateCreated": "4/4/2015 9:45 AM",
+    "DateModified": "7/4/2015 10:12 AM",
+    "CreatorID": "1159332",
+    "ModifierID": "1159332",
+    "CustomField1": "1212",
+    "CustomField2": "2323"
+  }
+}
