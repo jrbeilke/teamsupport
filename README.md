@@ -17,7 +17,8 @@
 A Ruby interface to the Teamsupport API.
 
 ## Installation
-    gem install twitter
+
+    gem install teamsupport
 
 ## Documentation
 [http://rdoc.info/gems/teamsupport][documentation]
@@ -25,10 +26,9 @@ A Ruby interface to the Teamsupport API.
 [documentation]: http://rdoc.info/gems/teamsupport
 
 To access custom fields you will need to use the attrs method along with the api field name:
-```ruby
-customer = client.customer(213747670)
-customer.attrs[:CustomField1]
-```
+
+    customer = client.customer(213747670)
+    customer.attrs[:CustomField1]
 
 Caveat: The TeamSupport API currently returns boolean values as "True"/"False" strings. A workaround has been applied to the teamsupport gem that will return a boolean true/false for any of the standard TeamSupport values that should be a boolean (ie. IsActive on customers and IsClosed on tickets). Any additional custom fields that were created in TeamSupport will return the "True"/"False" string value instead of the proper boolean.
 
@@ -48,68 +48,50 @@ you'll get the error:
 
 You can pass configuration options as a block to `Teamsupport::REST::Client.new`.
 
-```ruby
-client = Teamsupport::REST::Client.new do |config|
-  config.api_key    = "TEAMSUPPORT_ORGANIZATION_ID"
-  config.api_secret = "TEAMSUPPORT_API_TOKEN"
-end
-```
+    client = Teamsupport::REST::Client.new do |config|
+      config.api_key    = "TEAMSUPPORT_ORGANIZATION_ID"
+      config.api_secret = "TEAMSUPPORT_API_TOKEN"
+    end
 
 ## Usage Examples
 After configuring a `client`, you can do the following things.
 
 **Fetch a single customer (by organization ID)**
 
-```ruby
-client.customer(213747670)
-```
+    client.customer(213747670)
 
 **Fetch a list of customers with details (by organization ID, or by implicit authenticated parent organization)**
 
-```ruby
-client.customers
-```
+    client.customers
 
 **Fetch a single product (by product ID)**
 
-```ruby
-client.product(213747670)
-```
+    client.product(213747670)
 
 **Fetch a list of products with details (by product ID, or by implicit authenticated parent organization)**
 
-```ruby
-client.products
-```
+    client.products
 
 **Fetch a list of products for a customer (by customer ID)**
 
-```ruby
-client.customer_products(213747670)
-```
+    client.customer_products(213747670)
 
 **Fetch a single ticket (by ticket ID, or by ticket Number)**
 
-```ruby
-client.ticket(213747670)
-```
+    client.ticket(213747670)
 
 **Fetch a list of tickets with details (by ticket ID, or by implicit authenticated parent organization)**
 
-```ruby
-client.tickets
-```
+    client.tickets
 
 **Fetch a list of tickets for a customer (by customer ID)**
 
-```ruby
-client.customer_tickets(213747670)
-```
+    client.customer_tickets(213747670)
 
 ## Object Graph
 ![Entity-relationship diagram][erd]
 
-[erd]: etc/erd.svg "Entity-relationship diagram"
+[erd]: https://cdn.rawgit.com/jrbeilke/teamsupport/master/etc/erd.svg "Entity-relationship diagram"
 
 This entity-relationship diagram is generated programatically. If you add or
 remove any Teamsupport objects, please regenerate the ERD with the following
