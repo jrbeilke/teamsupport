@@ -42,9 +42,9 @@ describe Teamsupport::NullObject do
       expect(subject <=> 1).to eq(-1)
     end
     it 'is equal to other Teamsupport::NullObjects' do
-      null_object1 = Teamsupport::NullObject.new
-      null_object2 = Teamsupport::NullObject.new
-      expect(null_object1 <=> null_object2).to eq(0)
+      null_one = Teamsupport::NullObject.new
+      null_two = Teamsupport::NullObject.new
+      expect(null_one <=> null_two).to eq(0)
     end
   end
 
