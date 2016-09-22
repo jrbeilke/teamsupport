@@ -26,7 +26,7 @@ module Teamsupport
     #
     # @api private
     def patch
-      0
+      1
     end
 
     # Returns pre version
