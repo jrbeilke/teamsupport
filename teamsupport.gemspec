@@ -16,8 +16,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Jon Beilke']
   spec.email         = ['jrbeilke@gmail.com']
 
-  spec.summary       = spec.description
-  spec.description   = 'A Ruby interface to the Teamsupport API.'
+  spec.summary       = 'A Ruby interface to the Teamsupport API.'
+  spec.description   = 'A simple library for communicating with the TeamSupport API. Currently supports Customers, Products, and Tickets, with plans to expand to full support of the API with a 1.0 release.'
   spec.homepage      = 'https://github.com/jrbeilke/teamsupport'
   spec.licenses      = %w(MIT)
 

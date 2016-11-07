@@ -5,7 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## Unreleased
 - Backlog and Future Milestones are managed via [Github](https://github.com/jrbeilke/teamsupport/issues)
 
-## 0.2.0 - TBD
+## 0.2.0 - 2016-11-07
 ### Added
 - Add support for configuring URL used in API requests
 
