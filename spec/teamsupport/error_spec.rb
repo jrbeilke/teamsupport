@@ -23,7 +23,7 @@ describe Teamsupport::Error do
     context "when JSON body contains #{key}" do
       before do
         body = "{\"#{key}\":\"Internal Server Error\"}"
-        stub_get('/api/json/customers/x500.json').to_return(status: 500, body: body, headers: {content_type: 'application/json; charset=utf-8'})
+        stub_get(@client.api_url, '/api/json/customers/x500.json').to_return(status: 500, body: body, headers: {content_type: 'application/json; charset=utf-8'})
       end
       it 'raises an exception with the proper message' do
         expect { @client.customer('x500') }.to raise_error(Teamsupport::Error::InternalServerError)
@@ -34,7 +34,7 @@ describe Teamsupport::Error do
   Teamsupport::Error::ERRORS.each do |status, exception|
     context "when HTTP status is #{status}" do
       before do
-        stub_get('/api/json/customers/x.json').to_return(status: status, body: '{}', headers: {content_type: 'application/json; charset=utf-8'})
+        stub_get(@client.api_url, '/api/json/customers/x.json').to_return(status: status, body: '{}', headers: {content_type: 'application/json; charset=utf-8'})
       end
       it "raises #{exception}" do
         expect { @client.customer('x') }.to raise_error(exception)

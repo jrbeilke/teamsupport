@@ -17,7 +17,7 @@ module Teamsupport
     #
     # @api private
     def minor
-      1
+      2
     end
 
     # Returns patch version
@@ -26,7 +26,7 @@ module Teamsupport
     #
     # @api private
     def patch
-      1
+      0
     end
 
     # Returns pre version

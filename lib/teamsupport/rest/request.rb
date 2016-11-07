@@ -9,7 +9,6 @@ require 'teamsupport/headers'
 module Teamsupport
   module REST
     class Request
-      BASE_URL = 'https://app.teamsupport.com'.freeze
       attr_accessor :client, :headers, :options, :path, :request_method, :uri
       alias verb request_method
 
@@ -25,7 +24,7 @@ module Teamsupport
       # @api private
       def initialize(client, request_method, path, options = {})
         @client = client
-        @uri = Addressable::URI.parse(path.start_with?('http') ? path : BASE_URL + path)
+        @uri = Addressable::URI.parse(path.start_with?('http') ? path : @client.api_url + path)
         @request_method = request_method
         @headers = Teamsupport::Headers.new(@client, @request_method, @uri, options).request_headers
         @path = uri.path

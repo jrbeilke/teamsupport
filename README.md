@@ -51,7 +51,10 @@ You can pass configuration options as a block to `Teamsupport::REST::Client.new`
     client = Teamsupport::REST::Client.new do |config|
       config.api_key    = "TEAMSUPPORT_ORGANIZATION_ID"
       config.api_secret = "TEAMSUPPORT_API_TOKEN"
+      config.api_url = "TEAMSUPPORT_API_URL"
     end
+
+The API url is not required and will default to `https://app.teamsupport.com` if not defined in config.
 
 ## Usage Examples
 After configuring a `client`, you can do the following things.

@@ -25,7 +25,7 @@ end
 
 require 'yardstick/rake/verify'
 Yardstick::Rake::Verify.new do |verify|
-  verify.threshold = 80
+  verify.threshold = 80.2
 end
 
 task default: [:spec, :rubocop, :verify_measurements]

@@ -8,11 +8,11 @@ describe Teamsupport::REST::Customers do
   describe '#customer' do
     context 'when request customer' do
       before do
-        stub_get('/api/json/customers/354788.json').to_return(body: fixture('customer.json'), headers: {content_type: 'application/json; charset=utf-8'})
+        stub_get(@client.api_url, '/api/json/customers/354788.json').to_return(body: fixture('customer.json'), headers: {content_type: 'application/json; charset=utf-8'})
       end
       it 'requests the correct resource' do
         @client.customer('354788')
-        expect(a_get('/api/json/customers/354788.json')).to have_been_made
+        expect(a_get(@client.api_url, '/api/json/customers/354788.json')).to have_been_made
       end
       it 'returns the specified customer' do
         customer = @client.customer('354788')
@@ -30,11 +30,11 @@ describe Teamsupport::REST::Customers do
     end
     context 'when create_customer' do
       before do
-        stub_post('/api/json/customers.json').to_return(body: fixture('create_customer.json'), headers: {content_type: 'application/json; charset=utf-8'})
+        stub_post(@client.api_url, '/api/json/customers.json').to_return(body: fixture('create_customer.json'), headers: {content_type: 'application/json; charset=utf-8'})
       end
       it 'requests the correct resource' do
         @client.create_customer(Name: 'Test Customer Create')
-        expect(a_post('/api/json/customers.json')).to have_been_made
+        expect(a_post(@client.api_url, '/api/json/customers.json')).to have_been_made
       end
       it 'returns the specified customer' do
         customer = @client.create_customer(Name: 'Test Customer Create')
@@ -53,13 +53,13 @@ describe Teamsupport::REST::Customers do
     end
     context 'when update_customer' do
       before do
-        stub_get('/api/json/customers/354788.json').to_return(body: fixture('customer.json'), headers: {content_type: 'application/json; charset=utf-8'})
-        stub_put('/api/json/customers/354788.json').to_return(body: fixture('update_customer.json'), headers: {content_type: 'application/json; charset=utf-8'})
+        stub_get(@client.api_url, '/api/json/customers/354788.json').to_return(body: fixture('customer.json'), headers: {content_type: 'application/json; charset=utf-8'})
+        stub_put(@client.api_url, '/api/json/customers/354788.json').to_return(body: fixture('update_customer.json'), headers: {content_type: 'application/json; charset=utf-8'})
       end
       it 'requests the correct resources' do
         @client.update_customer('354788', Name: 'Test Customer Update')
-        expect(a_get('/api/json/customers/354788.json')).to have_been_made
-        expect(a_put('/api/json/customers/354788.json')).to have_been_made
+        expect(a_get(@client.api_url, '/api/json/customers/354788.json')).to have_been_made
+        expect(a_put(@client.api_url, '/api/json/customers/354788.json')).to have_been_made
       end
       it 'returns the updated customer' do
         customer = @client.update_customer('354788', Name: 'Test Customer Update')
@@ -78,11 +78,11 @@ describe Teamsupport::REST::Customers do
     end
     context 'when delete_customer' do
       before do
-        stub_delete('/api/json/customers/354788.json').to_return(body: fixture('customer.json'), headers: {content_type: 'application/json; charset=utf-8'})
+        stub_delete(@client.api_url, '/api/json/customers/354788.json').to_return(body: fixture('customer.json'), headers: {content_type: 'application/json; charset=utf-8'})
       end
       it 'requests the correct resource' do
         @client.delete_customer('354788')
-        expect(a_delete('/api/json/customers/354788.json')).to have_been_made
+        expect(a_delete(@client.api_url, '/api/json/customers/354788.json')).to have_been_made
       end
     end
   end
@@ -91,11 +91,11 @@ describe Teamsupport::REST::Customers do
     # TODO: test for multiple ids passed
     context 'without ids passed' do
       before do
-        stub_get('/api/json/customers.json').to_return(body: fixture('customers.json'), headers: {content_type: 'application/json; charset=utf-8'})
+        stub_get(@client.api_url, '/api/json/customers.json').to_return(body: fixture('customers.json'), headers: {content_type: 'application/json; charset=utf-8'})
       end
       it 'requests the correct resource' do
         @client.customers
-        expect(a_get('/api/json/customers.json')).to have_been_made
+        expect(a_get(@client.api_url, '/api/json/customers.json')).to have_been_made
       end
       it 'returns an array of customers' do
         customers = @client.customers
@@ -117,11 +117,11 @@ describe Teamsupport::REST::Customers do
 
   describe '#customer_products' do
     before do
-      stub_get('/api/json/customers/354788/products.json').to_return(body: fixture('customer_products.json'), headers: {content_type: 'application/json; charset=utf-8'})
+      stub_get(@client.api_url, '/api/json/customers/354788/products.json').to_return(body: fixture('customer_products.json'), headers: {content_type: 'application/json; charset=utf-8'})
     end
     it 'requests the correct resource' do
       @client.customer_products('354788')
-      expect(a_get('/api/json/customers/354788/products.json')).to have_been_made
+      expect(a_get(@client.api_url, '/api/json/customers/354788/products.json')).to have_been_made
     end
     it 'returns an array of products' do
       customer_products = @client.customer_products('354788')
@@ -133,11 +133,11 @@ describe Teamsupport::REST::Customers do
 
   describe '#customer_tickets' do
     before do
-      stub_get('/api/json/customers/354788/tickets.json').to_return(body: fixture('customer_tickets.json'), headers: {content_type: 'application/json; charset=utf-8'})
+      stub_get(@client.api_url, '/api/json/customers/354788/tickets.json').to_return(body: fixture('customer_tickets.json'), headers: {content_type: 'application/json; charset=utf-8'})
     end
     it 'requests the correct resource' do
       @client.customer_tickets('354788')
-      expect(a_get('/api/json/customers/354788/tickets.json')).to have_been_made
+      expect(a_get(@client.api_url, '/api/json/customers/354788/tickets.json')).to have_been_made
     end
     it 'returns an array of tickets' do
       customer_tickets = @client.customer_tickets('354788')
