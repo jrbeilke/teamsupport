@@ -1,6 +1,19 @@
 require 'helper'
 
 describe Teamsupport::Client do
+  describe '#api_url' do
+    it 'defaults https://app.teamsupport.com' do
+      expect(subject.api_url).to eq('https://app.teamsupport.com')
+    end
+  end
+
+  describe '#api_url=' do
+    it 'overwrites the api_url string' do
+      subject.api_url = 'https://app.na2.teamsupport.com'
+      expect(subject.api_url).to eq('https://app.na2.teamsupport.com')
+    end
+  end
+
   describe '#user_agent' do
     it 'defaults TeamsupportRubyGem/version' do
       expect(subject.user_agent).to eq("TeamsupportRubyGem/#{Teamsupport::Version}")

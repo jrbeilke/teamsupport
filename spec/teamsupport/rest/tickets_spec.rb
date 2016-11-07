@@ -8,11 +8,11 @@ describe Teamsupport::REST::Tickets do
   describe '#ticket' do
     context 'when request ticket' do
       before do
-        stub_get('/api/json/tickets/745895.json').to_return(body: fixture('ticket.json'), headers: {content_type: 'application/json; charset=utf-8'})
+        stub_get(@client.api_url, '/api/json/tickets/745895.json').to_return(body: fixture('ticket.json'), headers: {content_type: 'application/json; charset=utf-8'})
       end
       it 'requests the correct resource' do
         @client.ticket('745895')
-        expect(a_get('/api/json/tickets/745895.json')).to have_been_made
+        expect(a_get(@client.api_url, '/api/json/tickets/745895.json')).to have_been_made
       end
       it 'returns the specified ticket' do
         ticket = @client.ticket('745895')
@@ -30,11 +30,11 @@ describe Teamsupport::REST::Tickets do
     end
     context 'when create_ticket' do
       before do
-        stub_post('/api/json/tickets.json').to_return(body: fixture('create_ticket.json'), headers: {content_type: 'application/json; charset=utf-8'})
+        stub_post(@client.api_url, '/api/json/tickets.json').to_return(body: fixture('create_ticket.json'), headers: {content_type: 'application/json; charset=utf-8'})
       end
       it 'requests the correct resource' do
         @client.create_ticket(Name: 'Test Ticket Create')
-        expect(a_post('/api/json/tickets.json')).to have_been_made
+        expect(a_post(@client.api_url, '/api/json/tickets.json')).to have_been_made
       end
       it 'returns the specified ticket' do
         ticket = @client.create_ticket(Name: 'Test Ticket Create')
@@ -53,13 +53,13 @@ describe Teamsupport::REST::Tickets do
     end
     context 'when update_ticket' do
       before do
-        stub_get('/api/json/tickets/745895.json').to_return(body: fixture('ticket.json'), headers: {content_type: 'application/json; charset=utf-8'})
-        stub_put('/api/json/tickets/745895.json').to_return(body: fixture('update_ticket.json'), headers: {content_type: 'application/json; charset=utf-8'})
+        stub_get(@client.api_url, '/api/json/tickets/745895.json').to_return(body: fixture('ticket.json'), headers: {content_type: 'application/json; charset=utf-8'})
+        stub_put(@client.api_url, '/api/json/tickets/745895.json').to_return(body: fixture('update_ticket.json'), headers: {content_type: 'application/json; charset=utf-8'})
       end
       it 'requests the correct resources' do
         @client.update_ticket('745895', Name: 'Test Ticket Update')
-        expect(a_get('/api/json/tickets/745895.json')).to have_been_made
-        expect(a_put('/api/json/tickets/745895.json')).to have_been_made
+        expect(a_get(@client.api_url, '/api/json/tickets/745895.json')).to have_been_made
+        expect(a_put(@client.api_url, '/api/json/tickets/745895.json')).to have_been_made
       end
       it 'returns the updated ticket' do
         ticket = @client.update_ticket('745895', Name: 'Test Ticket Update')
@@ -78,11 +78,11 @@ describe Teamsupport::REST::Tickets do
     end
     context 'when delete_ticket' do
       before do
-        stub_delete('/api/json/tickets/745895.json').to_return(body: fixture('ticket.json'), headers: {content_type: 'application/json; charset=utf-8'})
+        stub_delete(@client.api_url, '/api/json/tickets/745895.json').to_return(body: fixture('ticket.json'), headers: {content_type: 'application/json; charset=utf-8'})
       end
       it 'requests the correct resource' do
         @client.delete_ticket('745895')
-        expect(a_delete('/api/json/tickets/745895.json')).to have_been_made
+        expect(a_delete(@client.api_url, '/api/json/tickets/745895.json')).to have_been_made
       end
     end
   end
@@ -91,11 +91,11 @@ describe Teamsupport::REST::Tickets do
     # TODO: test for multiple ids passed
     context 'without ids passed' do
       before do
-        stub_get('/api/json/tickets.json').to_return(body: fixture('tickets.json'), headers: {content_type: 'application/json; charset=utf-8'})
+        stub_get(@client.api_url, '/api/json/tickets.json').to_return(body: fixture('tickets.json'), headers: {content_type: 'application/json; charset=utf-8'})
       end
       it 'requests the correct resource' do
         @client.tickets
-        expect(a_get('/api/json/tickets.json')).to have_been_made
+        expect(a_get(@client.api_url, '/api/json/tickets.json')).to have_been_made
       end
       it 'returns an array of tickets' do
         tickets = @client.tickets
@@ -117,11 +117,11 @@ describe Teamsupport::REST::Tickets do
 
   describe '#ticket_actions' do
     before do
-      stub_get('/api/json/tickets/745895/actions.json').to_return(body: fixture('ticket_actions.json'), headers: {content_type: 'application/json; charset=utf-8'})
+      stub_get(@client.api_url, '/api/json/tickets/745895/actions.json').to_return(body: fixture('ticket_actions.json'), headers: {content_type: 'application/json; charset=utf-8'})
     end
     it 'requests the correct resource' do
       @client.ticket_actions('745895')
-      expect(a_get('/api/json/tickets/745895/actions.json')).to have_been_made
+      expect(a_get(@client.api_url, '/api/json/tickets/745895/actions.json')).to have_been_made
     end
     it 'returns an array of actions' do
       ticket_actions = @client.ticket_actions('745895')

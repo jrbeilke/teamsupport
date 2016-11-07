@@ -8,11 +8,11 @@ describe Teamsupport::REST::Products do
   describe '#product' do
     context 'when request product' do
       before do
-        stub_get('/api/json/products/2353.json').to_return(body: fixture('product.json'), headers: {content_type: 'application/json; charset=utf-8'})
+        stub_get(@client.api_url, '/api/json/products/2353.json').to_return(body: fixture('product.json'), headers: {content_type: 'application/json; charset=utf-8'})
       end
       it 'requests the correct resource' do
         @client.product('2353')
-        expect(a_get('/api/json/products/2353.json')).to have_been_made
+        expect(a_get(@client.api_url, '/api/json/products/2353.json')).to have_been_made
       end
       it 'returns the specified product' do
         product = @client.product('2353')
@@ -26,11 +26,11 @@ describe Teamsupport::REST::Products do
     end
     context 'when create_product' do
       before do
-        stub_post('/api/json/products.json').to_return(body: fixture('create_product.json'), headers: {content_type: 'application/json; charset=utf-8'})
+        stub_post(@client.api_url, '/api/json/products.json').to_return(body: fixture('create_product.json'), headers: {content_type: 'application/json; charset=utf-8'})
       end
       it 'requests the correct resource' do
         @client.create_product(Name: 'Test Product Create')
-        expect(a_post('/api/json/products.json')).to have_been_made
+        expect(a_post(@client.api_url, '/api/json/products.json')).to have_been_made
       end
       it 'returns the specified product' do
         product = @client.create_product(Name: 'Test Product Create')
@@ -45,13 +45,13 @@ describe Teamsupport::REST::Products do
     end
     context 'when update_product' do
       before do
-        stub_get('/api/json/products/2353.json').to_return(body: fixture('product.json'), headers: {content_type: 'application/json; charset=utf-8'})
-        stub_put('/api/json/products/2353.json').to_return(body: fixture('update_product.json'), headers: {content_type: 'application/json; charset=utf-8'})
+        stub_get(@client.api_url, '/api/json/products/2353.json').to_return(body: fixture('product.json'), headers: {content_type: 'application/json; charset=utf-8'})
+        stub_put(@client.api_url, '/api/json/products/2353.json').to_return(body: fixture('update_product.json'), headers: {content_type: 'application/json; charset=utf-8'})
       end
       it 'requests the correct resources' do
         @client.update_product('2353', Name: 'Test Product Update')
-        expect(a_get('/api/json/products/2353.json')).to have_been_made
-        expect(a_put('/api/json/products/2353.json')).to have_been_made
+        expect(a_get(@client.api_url, '/api/json/products/2353.json')).to have_been_made
+        expect(a_put(@client.api_url, '/api/json/products/2353.json')).to have_been_made
       end
       it 'returns the updated customer' do
         product = @client.update_product('2353', Name: 'Test Product Update')
@@ -66,11 +66,11 @@ describe Teamsupport::REST::Products do
     end
     context 'when delete_product' do
       before do
-        stub_delete('/api/json/products/2353.json').to_return(body: fixture('product.json'), headers: {content_type: 'application/json; charset=utf-8'})
+        stub_delete(@client.api_url, '/api/json/products/2353.json').to_return(body: fixture('product.json'), headers: {content_type: 'application/json; charset=utf-8'})
       end
       it 'requests the correct resource' do
         @client.delete_product('2353')
-        expect(a_delete('/api/json/products/2353.json')).to have_been_made
+        expect(a_delete(@client.api_url, '/api/json/products/2353.json')).to have_been_made
       end
     end
   end
@@ -79,11 +79,11 @@ describe Teamsupport::REST::Products do
     # TODO: test for multiple ids passed
     context 'without ids passed' do
       before do
-        stub_get('/api/json/products.json').to_return(body: fixture('products.json'), headers: {content_type: 'application/json; charset=utf-8'})
+        stub_get(@client.api_url, '/api/json/products.json').to_return(body: fixture('products.json'), headers: {content_type: 'application/json; charset=utf-8'})
       end
       it 'requests the correct resource' do
         @client.products
-        expect(a_get('/api/json/products.json')).to have_been_made
+        expect(a_get(@client.api_url, '/api/json/products.json')).to have_been_made
       end
       it 'returns an array of products' do
         products = @client.products

@@ -3,7 +3,7 @@ require 'helper'
 describe Teamsupport::Headers do
   before do
     @client = Teamsupport::REST::Client.new(api_key: 'AK', api_secret: 'AS')
-    @headers = Teamsupport::Headers.new(@client, :get, Teamsupport::REST::Request::BASE_URL + '/path')
+    @headers = Teamsupport::Headers.new(@client, :get, @client.api_url + '/path')
   end
 
   describe '#auth_header' do

@@ -6,6 +6,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Backlog and Future Milestones are managed via [Github](https://github.com/jrbeilke/teamsupport/issues)
 
 ## 0.2.0 - TBD
+### Added
+- Add support for configuring URL used in API requests
+
 ### Changed
 - Upgraded to use http v2 and removed support for Ruby 1.9
 

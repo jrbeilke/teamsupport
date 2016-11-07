@@ -16,16 +16,17 @@ module Teamsupport
     # @api public
     attr_accessor :api_key, :api_secret
 
-    # Provide user_agent method for overriding default Client user_agent value
+    # Provide api_url and user_agent methods for overriding default Client values
     #
     # @example
     #   teamsupport_client = Teamsupport::Client.new(api_key: 'AK', api_secret: 'AS')
+    #   teamsupport_client.api_url = 'https://app.teamsupport.com'
     #   teamsupport_client.user_agent = 'MyTeamsupportClient/1.0.0'
     #
     # @return [String]
     #
     # @api public
-    attr_writer :user_agent
+    attr_writer :api_url, :user_agent
 
     # Initializes a new Client object
     #
@@ -39,6 +40,19 @@ module Teamsupport
         instance_variable_set("@#{key}", value)
       end
       yield(self) if block_given?
+    end
+
+    # Returns api_url string for the Client
+    #
+    # @example
+    #   teamsupport_client = Teamsupport::Client.new(api_key: 'AK', api_secret: 'AS')
+    #   teamsupport_client.api_url
+    #
+    # @return [String]
+    #
+    # @api public
+    def api_url
+      @api_url ||= 'https://app.teamsupport.com'
     end
 
     # Returns user agent string for the Client
